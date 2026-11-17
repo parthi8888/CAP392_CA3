@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+
+        if (x < 0) {
+            return false;
+        }
+
+        int comparison = x;
+        int rev = 0;
+
+        while (x != 0) {
+
+            int lastDig = x % 10;
+            x /= 10;
+
+            if (rev > (Integer.MAX_VALUE - lastDig) / 10) {
+                return false;
+            }
+
+            rev = rev * 10 + lastDig;
+        }
+
+        if (comparison == rev) {
+            return true;
+        }
+
+        return false;
+    }
+}
